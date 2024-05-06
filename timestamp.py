@@ -39,8 +39,8 @@ image_dir_path2 = "name2"
 # 画像ファイルの拡張子
 extension = ".png"
 
-name_chara = ['Alexander','Brabasz','Gedeon','Izabella','Jacek','Jan','Kalkstein','Laszlo','Marie','Marta','Samuel','Tarnavsky','Yendrek','Zera']
-name_chara2 = ['Alexander','Brabasz','Gedeon','Izabella','Jacek','Jacek','Kalkstein','Laszlo','Marie','Marta','Samuel','Tarnavsky','Yendrek','Zera']
+name_chara = ['Alexander','Barabasz','Gedeon','Isabella','Jacek','Jan','Kalkstein','Laszlo','Marie','Marta','Samuel','Tarnavsky','Yendrek','Zera']
+name_chara2 = ['Alexander','Barabasz','Gedeon','Isabella','Jacek','Jacek','Kalkstein','Laszlo','Marie','Marta','Samuel','Tarnavsky','Yendrek','Zera']
 
 # 画像ファイルのリストを格納する配列
 name_image = []
