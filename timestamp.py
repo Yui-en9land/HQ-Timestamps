@@ -51,10 +51,12 @@ image_dir_path2 = "name2"
 # 画像ファイルの拡張子
 extension = ".png"
 
-name_chara = ['Alexander', 'Barabasz', 'Gedeon', 'Isabella', 'Jacek', 'Jan', 'Kalkstein', 'Laszlo', 'Marie', 'Marta',
-              'Samuel', 'Tarnavsky', 'Yendrek', 'Zera']
-name_chara2 = ['Alexander', 'Barabasz', 'Gedeon', 'Isabella', 'Jacek', 'Jacek', 'Kalkstein', 'Laszlo', 'Marie', 'Marta',
-               'Samuel', 'Tarnavsky', 'Yendrek', 'Zera']
+#name_chara = ['Alexander', 'Barabasz', 'Gedeon', 'Isabella', 'Jacek', 'Jan', 'Kalkstein', 'Laszlo', 'Marie', 'Marta',
+#              'Samuel', 'Tarnavsky', 'Yendrek', 'Zera']
+name_chara = []
+#name_chara2 = ['Alexander', 'Barabasz', 'Gedeon', 'Isabella', 'Jacek', 'Jacek', 'Kalkstein', 'Laszlo', 'Marie', 'Marta',
+#               'Samuel', 'Tarnavsky', 'Yendrek', 'Zera']
+name_chara2 = []
 
 start_comment = 'Timestamps:\n0:00:00 Settings\n'
 timestamps.append(start_comment)
@@ -79,6 +81,10 @@ for filename in os.listdir(image_dir_path1):
         if image is not None:
             resized_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             name_image.append(resized_image)
+    filename = filename.replace('hq1_','')
+    filename = filename.replace('.png','')
+    name_chara.append(filename)
+
 # 2playerのキャラ名前画像ファイルを読み込んでCV2グレーカラーにし配列に格納
 for filename in os.listdir(image_dir_path2):
     if filename.endswith(extension):
@@ -87,6 +93,9 @@ for filename in os.listdir(image_dir_path2):
         if image is not None:
             resized_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             name_image2.append(resized_image)
+    filename = filename.replace('hq2_','')
+    filename = filename.replace('.png','')
+    name_chara2.append(filename)
 
 # 検出する画像の読み込み
 black_image = cv2.imread('check/black.png', 1)
