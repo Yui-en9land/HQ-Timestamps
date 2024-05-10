@@ -298,7 +298,7 @@ while True:
             #ステージセレクト画面を判定
             result2 = cv2.matchTemplate(frame_g, stage_select, cv2.TM_CCOEFF_NORMED)
             min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(result2)
-            cv2.imwrite('stageselect_.png', frame_g)
+            # cv2.imwrite('stageselect_.png', frame_g)
             if max_val2 > 0.6:
                 stage_flag = 1
                 x = 0
