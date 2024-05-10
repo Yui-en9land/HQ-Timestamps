@@ -28,11 +28,12 @@ player2_name = 'none'
 
 frame_number = 1
 x = 0
-flag_flag = 1
+flag_flag = 0
 chara_flag = 0
 stage_flag = 0
 load_flag = 0
 black_flag = 0
+init_check = 0
 match_no = 1
 
 # マッチングする座標の範囲（左上と右下の座標）
@@ -261,8 +262,10 @@ while True:
             flag_flag = flag_check(frame_r, timestamps)
             if flag_flag == 1:
                 match_no += 1
-        # フラッグの判定済かつキャラセレクト画面未判定？
-        if (chara_flag == 0) and (flag_flag == 1):
+        # フラッグの判定済または初回判定？　かつキャラセレクト画面未判定？
+        # 試合途中から録画開始するパターンもあるためflag_flagの初期値を0に設定
+        # そのため初回のみflag_flagが0でも動作するようinit_checkで初回のみ動作させる
+        if (chara_flag == 0) and ((flag_flag == 1) or(init_check == 0)):
             # グレースケールに変更
             frame_g = cv2.cvtColor(frame_r, cv2.COLOR_BGR2GRAY)
             # キャラセレクト画面判定
@@ -270,6 +273,7 @@ while True:
             # 判定後にメインメニューに戻った時に再度キャラセレクト判定ができるようにリセットする
             if chara_flag == 1:
                 load_flag = 0
+                init_check = 1
 
     # キャラセレクト画面判定済かつステージセレクト画面未判定
     if (stage_flag == 0) and (chara_flag == 1):
