@@ -277,7 +277,7 @@ while True:
 
     # キャラセレクト画面判定済かつステージセレクト画面未判定
     if (stage_flag == 0) and (chara_flag == 1):
-        # キャラセレクトはシビアなため15FPSで判定
+        # キャラセレクトとステージセレクトはシビアなため15FPSで判定
         if frame_number % 15 == 0:
             # 640*360(16:9)にリサイズ
             frame_r = cv2.resize(frame, (640, 360))
@@ -286,12 +286,7 @@ while True:
             # プレイヤーキャラセレクト判定(プレイヤーキャラセレクトは終了が判定できないためフラグは使用しない)
             [player1_name, player2_name] = player_check(frame_g, player1_name, player2_name)
 
-        # ステージセレクト画面はフレームレートの等倍で判定
-        if frame_number % fps == 0:
-            # 640*360(16:9)にリサイズ
-            frame_r = cv2.resize(frame, (640, 360))
-            # グレースケールに変更
-            frame_g = cv2.cvtColor(frame_r, cv2.COLOR_BGR2GRAY)
+            #ステージセレクト画面を判定
             result2 = cv2.matchTemplate(frame_g, stage_select, cv2.TM_CCOEFF_NORMED)
             min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(result2)
             cv2.imwrite('stageselect_.png', frame_g)
