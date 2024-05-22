@@ -383,7 +383,7 @@ str_today = d_today.strftime('%Y%m%d')
 if os.path.exists(str_today + 'timestamps.txt'):
     os.remove(str_today + 'timestamps.txt')
 # タイムスタンプをファイルに一括で書き込む
-with open(str_today + 'timestamps.txt', 'a') as file:
+with open(str_today + 'timestamps.txt', 'w',  encoding='utf-8') as file:
     for timestamp in timestamps:
         file.write(timestamp)
 
